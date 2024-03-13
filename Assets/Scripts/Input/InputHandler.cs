@@ -22,6 +22,6 @@ public class InputHandler : IInput
 
     public bool IsJumping()
     {
-        throw new System.NotImplementedException();
+        return _newInput.Gameplay.Jump.triggered;
     }
 }

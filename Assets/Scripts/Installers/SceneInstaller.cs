@@ -4,12 +4,13 @@ using Zenject;
 public class SceneInstaller : MonoInstaller
 {
     [SerializeField] private CharacterControl _characterControlPrefab;
+    [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Camera _cameraPrefab;
     
     public override void InstallBindings()
     {
         BindCharacter();
-        //BindCamera();
+        BindCamera();
     }
     
     private void BindCharacter()
@@ -18,6 +19,7 @@ public class SceneInstaller : MonoInstaller
             .Bind<CharacterControl>()
             .FromComponentInNewPrefab(_characterControlPrefab)
             .AsSingle()
+            .WithArguments(_spawnPoint)
             .NonLazy();
     }
 
